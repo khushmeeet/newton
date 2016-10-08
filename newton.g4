@@ -33,14 +33,14 @@ structures  : array
 array       : ( DASH value )+
             ;
 
-value       : ( ID | INT ) NL
+value       : ( ID | NUMBER ) NL
             | object
             ;
 
 object      : ( pair NL? )+
             ;
 
-pair        : ID COLON ( ID | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( object ) DEDENT? )
+pair        : ID COLON ( ( ID | NUMBER ) | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( object ) DEDENT? )
             ;
 
 DASH        : '-'
@@ -55,10 +55,21 @@ CLOSED_PAR  : '{}'
 COMMENT     : '#' .*? NL   -> skip
             ;
 
-ID          : [a-zA-Z]+
+ID          : [a-z_A-Z' ']+
             ;
 
-INT         : [0-9]+
+NUMBER      : REAL
+            | HEX
+            | OCTAL
+            ;
+
+REAL        : [0-9]+ ( '.' [0-9]+ )*
+            ;
+
+HEX         : '0x' [0-9A-Fa-f]+
+            ;
+
+OCTAL       : '0c' [0-7]+
             ;
 
 NL          : ('\r'?'\n''\t'*)
