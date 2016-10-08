@@ -34,19 +34,22 @@ array       : ( DASH value NL )+
             ;
 
 value       : ( ID | INT )
-            | ( object NL )+
+            | ( object )
             ;
 
-object      : pair NL ( INDENT? pair NL DEDENT? )*
+object      : ( pair NL )+
             ;
 
-pair        : ID COLON ( ID | INDENT? array+ DEDENT?)
+pair        : ID COLON ( ID | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( pair NL )+ DEDENT? )
             ;
 
-DASH        : '- '
+DASH        : '-'
             ;
 
 COLON       : ': '
+            ;
+
+CLOSED_PAR  : '{}'
             ;
 
 COMMENT     : '#' .*? NL   -> skip
