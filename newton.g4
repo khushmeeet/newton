@@ -12,7 +12,7 @@ tokens { INDENT, DEDENT }
   {
     @Override
     public Token pullToken() {
-      return fluxLexer.super.nextToken();
+      return newtonLexer.super.nextToken();
     }
   };
 
@@ -30,23 +30,36 @@ structures  : array
             | object
             ;
 
-array       : '-' ( ID | INT ) NL
+array       : ( DASH value NL )+
             ;
 
-object      : pair ( INDENT? pair DEDENT? )*
+value       : ( ID | INT )
+            | ( object NL )+
             ;
 
-pair        : ID ':' ID NL
+object      : pair NL ( INDENT? pair NL DEDENT? )*
             ;
 
-COMMENT     : '#' .*?   -> skip
+pair        : ID COLON ( ID | INDENT? array+ DEDENT?)
+            ;
+
+DASH        : '- '
+            ;
+
+COLON       : ': '
+            ;
+
+COMMENT     : '#' .*? NL   -> skip
             ;
 
 ID          : [a-zA-Z]+
             ;
 
-INT         :
+INT         : [0-9]+
             ;
 
 NL          : ('\r'?'\n''\t'*)
+            ;
+
+WS          : ' '   -> skip
             ;
