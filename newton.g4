@@ -23,24 +23,32 @@ tokens { INDENT, DEDENT }
 }
 
 file        : structures
-            | COMMENT
+            | COMMENT                                       
             ;
 
-structures  : array
-            | object
+structures  : array                                         
+            | object                                        
             ;
 
 array       : ( DASH value )+
             ;
 
-value       : ( ID | NUMBER ) NL
+value       : data NL
             | object
             ;
 
 object      : ( pair NL? )+
             ;
 
-pair        : ID COLON ( ( ID | NUMBER ) | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( object ) DEDENT? )
+pair        : ID COLON data                                 # DataValue                
+            | ID COLON INDENT? array+ DEDENT?               # ArrayValue
+            | ID COLON CLOSED_PAR                           # EmptyObject
+            | ID COLON INDENT? ( object ) DEDENT?           # NestedObject
+            ;
+
+data        : ID  
+            | NUMBER
+            | BOOLEAN
             ;
 
 DASH        : '-'
@@ -61,6 +69,11 @@ ID          : [a-z_A-Z' ']+
 NUMBER      : REAL
             | HEX
             | OCTAL
+            ;
+
+BOOLEAN     : 'true'
+            | 'false'
+            | 'null'
             ;
 
 REAL        : [0-9]+ ( '.' [0-9]+ )*
