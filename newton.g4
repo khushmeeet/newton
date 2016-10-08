@@ -33,22 +33,23 @@ structures  : array
 array       : ( DASH value )+
             ;
 
-value       : data NL
-            | object
+value       : data NL                                       # ArrayValue
+            | object                                        # ObjectInArray
             ;
 
 object      : ( pair NL? )+
             ;
 
-pair        : ID COLON data                                 # DataValue                
-            | ID COLON INDENT? array+ DEDENT?               # ArrayValue
+pair        : ID COLON data                                 # ObjectValue                
+            | ID COLON INDENT? array+ DEDENT?               # ArrayInObject
             | ID COLON CLOSED_PAR                           # EmptyObject
-            | ID COLON INDENT? ( object ) DEDENT?           # NestedObject
+            | ID COLON INDENT? object DEDENT?               # NestedObject
             ;
 
-data        : ID  
-            | NUMBER
-            | BOOLEAN
+data        : ID                                            # String
+            | NUMBER                                        # NumericValue
+            | BOOLEAN                                       # BoolValue
+            | 'null'                                        # NullValue 
             ;
 
 DASH        : '-'
@@ -73,7 +74,6 @@ NUMBER      : REAL
 
 BOOLEAN     : 'true'
             | 'false'
-            | 'null'
             ;
 
 REAL        : [0-9]+ ( '.' [0-9]+ )*
