@@ -22,8 +22,7 @@ tokens { INDENT, DEDENT }
   }
 }
 
-file        : structures
-            | COMMENT                                       
+file        : structures                                       
             ;
 
 structures  : array                                         
@@ -61,10 +60,7 @@ COLON       : ': '
 CLOSED_PAR  : '{}'
             ;
 
-COMMENT     : '#' .*? NL   -> skip
-            ;
-
-ID          : [a-z_A-Z' ']+
+ID          : [a-z_A-Z0-9' '<>/?*$@:;~`\|!&-+{}.]+
             ;
 
 NUMBER      : REAL
@@ -86,6 +82,9 @@ OCTAL       : '0c' [0-7]+
             ;
 
 NL          : ('\r'?'\n''\t'*)
+            ;
+
+COMMENT     : '#' ~[\r\n]*   -> skip
             ;
 
 WS          : ' '   -> skip
