@@ -30,17 +30,17 @@ structures  : array
             | object
             ;
 
-array       : ( DASH value NL )+
+array       : ( DASH value )+
             ;
 
-value       : ( ID | INT )
-            | ( object )
+value       : ( ID | INT ) NL
+            | object
             ;
 
-object      : ( pair NL )+
+object      : ( pair NL? )+
             ;
 
-pair        : ID COLON ( ID | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( pair NL )+ DEDENT? )
+pair        : ID COLON ( ID | INDENT? array+ DEDENT? | CLOSED_PAR | INDENT? ( object ) DEDENT? )
             ;
 
 DASH        : '-'
