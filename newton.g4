@@ -32,22 +32,21 @@ structures  : array
 array       : ( DASH value )+
             ;
 
-value       : data NL                                       # ArrayValue
-            | object                                        # ObjectInArray
+value       : data NL                                       
             ;
 
 object      : ( pair NL? )+
             ;
 
-pair        : ID COLON data NL                              # ObjectValue                
-            | ID COLON INDENT? array DEDENT?                # ArrayInObject
-            | ID COLON CLOSED_PAR                           # EmptyObject
-            | ID COLON INDENT? object DEDENT?               # NestedObject
+pair        : NL? ID COLON INDENT? data DEDENT?
             ;
 
-data        : ID                                            # String
+data        : ID                                            # StringValue
             | NUMBER                                        # NumericValue
             | BOOLEAN                                       # BooleanValue
+            | object                                        # ObjectValue
+            | array                                         # ArrayValue
+            | CLOSED_PAR                                    # EmptyObject
             ;
 
 DASH        : '-'
