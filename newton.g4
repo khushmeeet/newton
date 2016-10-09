@@ -40,15 +40,14 @@ object      : ( pair NL? )+
             ;
 
 pair        : ID COLON data NL                              # ObjectValue                
-            | ID COLON INDENT? array+ DEDENT?               # ArrayInObject
+            | ID COLON INDENT? array DEDENT?                # ArrayInObject
             | ID COLON CLOSED_PAR                           # EmptyObject
             | ID COLON INDENT? object DEDENT?               # NestedObject
             ;
 
 data        : ID                                            # String
             | NUMBER                                        # NumericValue
-            | BOOLEAN                                       # BoolValue
-            | 'null'                                        # NullValue 
+            | BOOLEAN                                       # BooleanValue
             ;
 
 DASH        : '-'
@@ -60,16 +59,16 @@ COLON       : ': '
 CLOSED_PAR  : '{}'
             ;
 
+BOOLEAN     : 'true'
+            | 'false'
+            ;
+
 ID          : [a-z_A-Z0-9' '~!@$%*&^?.]+
             ;
 
 NUMBER      : REAL
             | HEX
             | OCTAL
-            ;
-
-BOOLEAN     : 'true'
-            | 'false'
             ;
 
 REAL        : [0-9]+ ( '.' [0-9]+ )*
