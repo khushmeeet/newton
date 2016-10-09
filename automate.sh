@@ -4,6 +4,14 @@ cd src/
 javac Renderer.java -d ../gen
 echo 'Compiling Renderer'
 cd ../gen/
-echo 'Running Renderer'
-echo '-----'
-java Renderer ../testing/test.newton
+
+if [ $1 == 'build' ]
+then
+    echo 'Running Renderer'
+    echo '-----'
+    java Renderer ../testing/test.newton
+elif [ $1 == 'ast' ]
+then
+    echo 'Running TestRig...'
+    java org.antlr.v4.gui.TestRig newton file -gui
+fi
