@@ -17,7 +17,7 @@ public class Renderer {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         newtonParser parser = new newtonParser(tokens);
         parser.setBuildParseTree(true);
-        ParseTree tree = parser.file();
+        ParseTree tree = parser.pair();
         // show tree in text form
         System.out.println(tree.toStringTree(parser));
 
