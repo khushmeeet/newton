@@ -159,25 +159,13 @@ public class newtonBaseListener implements newtonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolValue(newtonParser.BoolValueContext ctx) { }
+	@Override public void enterBooleanValue(newtonParser.BooleanValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolValue(newtonParser.BoolValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNullValue(newtonParser.NullValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNullValue(newtonParser.NullValueContext ctx) { }
+	@Override public void exitBooleanValue(newtonParser.BooleanValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -16,8 +16,8 @@ public class newtonParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, DASH=2, COLON=3, CLOSED_PAR=4, ID=5, NUMBER=6, BOOLEAN=7, REAL=8, 
-		HEX=9, OCTAL=10, NL=11, COMMENT=12, WS=13, INDENT=14, DEDENT=15;
+		DASH=1, COLON=2, CLOSED_PAR=3, BOOLEAN=4, ID=5, NUMBER=6, REAL=7, HEX=8, 
+		OCTAL=9, NL=10, COMMENT=11, WS=12, INDENT=13, DEDENT=14;
 	public static final int
 		RULE_file = 0, RULE_structures = 1, RULE_array = 2, RULE_value = 3, RULE_object = 4, 
 		RULE_pair = 5, RULE_data = 6;
@@ -26,12 +26,12 @@ public class newtonParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'null'", "'-'", "': '", "'{}'", null, null, null, null, null, null, 
-		null, null, "' '"
+		null, "'-'", "': '", "'{}'", null, null, null, null, null, null, null, 
+		null, "' '"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "DASH", "COLON", "CLOSED_PAR", "ID", "NUMBER", "BOOLEAN", 
-		"REAL", "HEX", "OCTAL", "NL", "COMMENT", "WS", "INDENT", "DEDENT"
+		null, "DASH", "COLON", "CLOSED_PAR", "BOOLEAN", "ID", "NUMBER", "REAL", 
+		"HEX", "OCTAL", "NL", "COMMENT", "WS", "INDENT", "DEDENT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -412,13 +412,10 @@ public class newtonParser extends Parser {
 	public static class ArrayInObjectContext extends PairContext {
 		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
 		public TerminalNode COLON() { return getToken(newtonParser.COLON, 0); }
+		public ArrayContext array() {
+			return getRuleContext(ArrayContext.class,0);
+		}
 		public TerminalNode INDENT() { return getToken(newtonParser.INDENT, 0); }
-		public List<ArrayContext> array() {
-			return getRuleContexts(ArrayContext.class);
-		}
-		public ArrayContext array(int i) {
-			return getRuleContext(ArrayContext.class,i);
-		}
 		public TerminalNode DEDENT() { return getToken(newtonParser.DEDENT, 0); }
 		public ArrayInObjectContext(PairContext ctx) { copyFrom(ctx); }
 		@Override
@@ -485,10 +482,9 @@ public class newtonParser extends Parser {
 		enterRule(_localctx, 10, RULE_pair);
 		int _la;
 		try {
-			int _alt;
-			setState(70);
+			setState(66);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				_localctx = new ObjectValueContext(_localctx);
 				enterOuterAlt(_localctx, 1);
@@ -520,32 +516,14 @@ public class newtonParser extends Parser {
 					}
 				}
 
-				setState(51); 
+				setState(50);
+				array();
+				setState(52);
 				_errHandler.sync(this);
-				_alt = 1;
-				do {
-					switch (_alt) {
-					case 1:
-						{
-						{
-						setState(50);
-						array();
-						}
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					setState(53); 
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-				setState(56);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 				case 1:
 					{
-					setState(55);
+					setState(51);
 					match(DEDENT);
 					}
 					break;
@@ -556,11 +534,11 @@ public class newtonParser extends Parser {
 				_localctx = new EmptyObjectContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(58);
+				setState(54);
 				match(ID);
-				setState(59);
+				setState(55);
 				match(COLON);
-				setState(60);
+				setState(56);
 				match(CLOSED_PAR);
 				}
 				break;
@@ -568,27 +546,27 @@ public class newtonParser extends Parser {
 				_localctx = new NestedObjectContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(61);
+				setState(57);
 				match(ID);
-				setState(62);
+				setState(58);
 				match(COLON);
-				setState(64);
+				setState(60);
 				_la = _input.LA(1);
 				if (_la==INDENT) {
 					{
-					setState(63);
+					setState(59);
 					match(INDENT);
 					}
 				}
 
-				setState(66);
+				setState(62);
 				object();
-				setState(68);
+				setState(64);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 				case 1:
 					{
-					setState(67);
+					setState(63);
 					match(DEDENT);
 					}
 					break;
@@ -619,27 +597,16 @@ public class newtonParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class NullValueContext extends DataContext {
-		public NullValueContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterNullValue(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitNullValue(this);
-		}
-	}
-	public static class BoolValueContext extends DataContext {
+	public static class BooleanValueContext extends DataContext {
 		public TerminalNode BOOLEAN() { return getToken(newtonParser.BOOLEAN, 0); }
-		public BoolValueContext(DataContext ctx) { copyFrom(ctx); }
+		public BooleanValueContext(DataContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterBoolValue(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterBooleanValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitBoolValue(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitBooleanValue(this);
 		}
 	}
 	public static class StringContext extends DataContext {
@@ -671,13 +638,13 @@ public class newtonParser extends Parser {
 		DataContext _localctx = new DataContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_data);
 		try {
-			setState(76);
+			setState(71);
 			switch (_input.LA(1)) {
 			case ID:
 				_localctx = new StringContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(72);
+				setState(68);
 				match(ID);
 				}
 				break;
@@ -685,24 +652,16 @@ public class newtonParser extends Parser {
 				_localctx = new NumericValueContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(73);
+				setState(69);
 				match(NUMBER);
 				}
 				break;
 			case BOOLEAN:
-				_localctx = new BoolValueContext(_localctx);
+				_localctx = new BooleanValueContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(74);
+				setState(70);
 				match(BOOLEAN);
-				}
-				break;
-			case T__0:
-				_localctx = new NullValueContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(75);
-				match(T__0);
 				}
 				break;
 			default:
@@ -721,28 +680,26 @@ public class newtonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\21Q\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20L\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\3\3\3\5\3\25\n\3"+
 		"\3\4\3\4\6\4\31\n\4\r\4\16\4\32\3\5\3\5\3\5\3\5\5\5!\n\5\3\6\3\6\5\6%"+
 		"\n\6\6\6\'\n\6\r\6\16\6(\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\63\n\7\3"+
-		"\7\6\7\66\n\7\r\7\16\7\67\3\7\5\7;\n\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7C\n"+
-		"\7\3\7\3\7\5\7G\n\7\5\7I\n\7\3\b\3\b\3\b\3\b\5\bO\n\b\3\b\2\2\t\2\4\6"+
-		"\b\n\f\16\2\2Y\2\20\3\2\2\2\4\24\3\2\2\2\6\30\3\2\2\2\b \3\2\2\2\n&\3"+
-		"\2\2\2\fH\3\2\2\2\16N\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2"+
-		"\23\25\5\n\6\2\24\22\3\2\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\4\2\2"+
-		"\27\31\5\b\5\2\30\26\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2"+
-		"\33\7\3\2\2\2\34\35\5\16\b\2\35\36\7\r\2\2\36!\3\2\2\2\37!\5\n\6\2 \34"+
-		"\3\2\2\2 \37\3\2\2\2!\t\3\2\2\2\"$\5\f\7\2#%\7\r\2\2$#\3\2\2\2$%\3\2\2"+
-		"\2%\'\3\2\2\2&\"\3\2\2\2\'(\3\2\2\2(&\3\2\2\2()\3\2\2\2)\13\3\2\2\2*+"+
-		"\7\7\2\2+,\7\5\2\2,-\5\16\b\2-.\7\r\2\2.I\3\2\2\2/\60\7\7\2\2\60\62\7"+
-		"\5\2\2\61\63\7\20\2\2\62\61\3\2\2\2\62\63\3\2\2\2\63\65\3\2\2\2\64\66"+
-		"\5\6\4\2\65\64\3\2\2\2\66\67\3\2\2\2\67\65\3\2\2\2\678\3\2\2\28:\3\2\2"+
-		"\29;\7\21\2\2:9\3\2\2\2:;\3\2\2\2;I\3\2\2\2<=\7\7\2\2=>\7\5\2\2>I\7\6"+
-		"\2\2?@\7\7\2\2@B\7\5\2\2AC\7\20\2\2BA\3\2\2\2BC\3\2\2\2CD\3\2\2\2DF\5"+
-		"\n\6\2EG\7\21\2\2FE\3\2\2\2FG\3\2\2\2GI\3\2\2\2H*\3\2\2\2H/\3\2\2\2H<"+
-		"\3\2\2\2H?\3\2\2\2I\r\3\2\2\2JO\7\7\2\2KO\7\b\2\2LO\7\t\2\2MO\7\3\2\2"+
-		"NJ\3\2\2\2NK\3\2\2\2NL\3\2\2\2NM\3\2\2\2O\17\3\2\2\2\16\24\32 $(\62\67"+
-		":BFHN";
+		"\7\3\7\5\7\67\n\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7?\n\7\3\7\3\7\5\7C\n\7\5"+
+		"\7E\n\7\3\b\3\b\3\b\5\bJ\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2R\2\20\3\2\2"+
+		"\2\4\24\3\2\2\2\6\30\3\2\2\2\b \3\2\2\2\n&\3\2\2\2\fD\3\2\2\2\16I\3\2"+
+		"\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2\23\25\5\n\6\2\24\22\3\2"+
+		"\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\3\2\2\27\31\5\b\5\2\30\26\3\2"+
+		"\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\7\3\2\2\2\34\35\5\16"+
+		"\b\2\35\36\7\f\2\2\36!\3\2\2\2\37!\5\n\6\2 \34\3\2\2\2 \37\3\2\2\2!\t"+
+		"\3\2\2\2\"$\5\f\7\2#%\7\f\2\2$#\3\2\2\2$%\3\2\2\2%\'\3\2\2\2&\"\3\2\2"+
+		"\2\'(\3\2\2\2(&\3\2\2\2()\3\2\2\2)\13\3\2\2\2*+\7\7\2\2+,\7\4\2\2,-\5"+
+		"\16\b\2-.\7\f\2\2.E\3\2\2\2/\60\7\7\2\2\60\62\7\4\2\2\61\63\7\17\2\2\62"+
+		"\61\3\2\2\2\62\63\3\2\2\2\63\64\3\2\2\2\64\66\5\6\4\2\65\67\7\20\2\2\66"+
+		"\65\3\2\2\2\66\67\3\2\2\2\67E\3\2\2\289\7\7\2\29:\7\4\2\2:E\7\5\2\2;<"+
+		"\7\7\2\2<>\7\4\2\2=?\7\17\2\2>=\3\2\2\2>?\3\2\2\2?@\3\2\2\2@B\5\n\6\2"+
+		"AC\7\20\2\2BA\3\2\2\2BC\3\2\2\2CE\3\2\2\2D*\3\2\2\2D/\3\2\2\2D8\3\2\2"+
+		"\2D;\3\2\2\2E\r\3\2\2\2FJ\7\7\2\2GJ\7\b\2\2HJ\7\6\2\2IF\3\2\2\2IG\3\2"+
+		"\2\2IH\3\2\2\2J\17\3\2\2\2\r\24\32 $(\62\66>BDI";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

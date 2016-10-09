@@ -143,27 +143,15 @@ public interface newtonListener extends ParseTreeListener {
 	 */
 	void exitNumericValue(newtonParser.NumericValueContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code BoolValue}
+	 * Enter a parse tree produced by the {@code BooleanValue}
 	 * labeled alternative in {@link newtonParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoolValue(newtonParser.BoolValueContext ctx);
+	void enterBooleanValue(newtonParser.BooleanValueContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code BoolValue}
+	 * Exit a parse tree produced by the {@code BooleanValue}
 	 * labeled alternative in {@link newtonParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoolValue(newtonParser.BoolValueContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code NullValue}
-	 * labeled alternative in {@link newtonParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterNullValue(newtonParser.NullValueContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code NullValue}
-	 * labeled alternative in {@link newtonParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitNullValue(newtonParser.NullValueContext ctx);
+	void exitBooleanValue(newtonParser.BooleanValueContext ctx);
 }

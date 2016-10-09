@@ -17,10 +17,10 @@ public class Renderer {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         newtonParser parser = new newtonParser(tokens);
         parser.setBuildParseTree(true);
-        ParseTree tree = parser.pair();
+        ParseTree tree = parser.file();
         // show tree in text form
         System.out.println(tree.toStringTree(parser));
-
+        System.out.println("\n");
         ParseTreeWalker walker = new ParseTreeWalker();
         JSONEmitter emitter = new JSONEmitter();
         walker.walk(emitter, tree);
