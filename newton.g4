@@ -39,7 +39,7 @@ value       : data NL                                       # ArrayValue
 object      : ( pair NL? )+
             ;
 
-pair        : ID COLON data                                 # ObjectValue                
+pair        : ID COLON data NL                              # ObjectValue                
             | ID COLON INDENT? array+ DEDENT?               # ArrayInObject
             | ID COLON CLOSED_PAR                           # EmptyObject
             | ID COLON INDENT? object DEDENT?               # NestedObject
@@ -60,7 +60,7 @@ COLON       : ': '
 CLOSED_PAR  : '{}'
             ;
 
-ID          : [a-z_A-Z0-9' '<>/?*$@:;~`\|!&-+{}.]+
+ID          : [a-z_A-Z0-9' '~!@$%*&^?.]+
             ;
 
 NUMBER      : REAL
