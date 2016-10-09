@@ -1,5 +1,5 @@
 echo 'Generating Lexer and Parser'
-antlr4 newton.g4 -o src
+antlr4 newton.g4 -o src/ -listener -no-visitor
 cd src/
 javac Renderer.java -d ../gen
 echo 'Compiling Renderer'
