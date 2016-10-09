@@ -454,6 +454,7 @@ public class newtonParser extends Parser {
 		public DataContext data() {
 			return getRuleContext(DataContext.class,0);
 		}
+		public TerminalNode NL() { return getToken(newtonParser.NL, 0); }
 		public ObjectValueContext(PairContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -485,7 +486,7 @@ public class newtonParser extends Parser {
 		int _la;
 		try {
 			int _alt;
-			setState(68);
+			setState(70);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
@@ -498,26 +499,28 @@ public class newtonParser extends Parser {
 				match(COLON);
 				setState(42);
 				data();
+				setState(43);
+				match(NL);
 				}
 				break;
 			case 2:
 				_localctx = new ArrayInObjectContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(43);
+				setState(45);
 				match(ID);
-				setState(44);
-				match(COLON);
 				setState(46);
+				match(COLON);
+				setState(48);
 				_la = _input.LA(1);
 				if (_la==INDENT) {
 					{
-					setState(45);
+					setState(47);
 					match(INDENT);
 					}
 				}
 
-				setState(49); 
+				setState(51); 
 				_errHandler.sync(this);
 				_alt = 1;
 				do {
@@ -525,7 +528,7 @@ public class newtonParser extends Parser {
 					case 1:
 						{
 						{
-						setState(48);
+						setState(50);
 						array();
 						}
 						}
@@ -533,16 +536,16 @@ public class newtonParser extends Parser {
 					default:
 						throw new NoViableAltException(this);
 					}
-					setState(51); 
+					setState(53); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-				setState(54);
+				setState(56);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 				case 1:
 					{
-					setState(53);
+					setState(55);
 					match(DEDENT);
 					}
 					break;
@@ -553,11 +556,11 @@ public class newtonParser extends Parser {
 				_localctx = new EmptyObjectContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(56);
-				match(ID);
-				setState(57);
-				match(COLON);
 				setState(58);
+				match(ID);
+				setState(59);
+				match(COLON);
+				setState(60);
 				match(CLOSED_PAR);
 				}
 				break;
@@ -565,27 +568,27 @@ public class newtonParser extends Parser {
 				_localctx = new NestedObjectContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(59);
+				setState(61);
 				match(ID);
-				setState(60);
-				match(COLON);
 				setState(62);
+				match(COLON);
+				setState(64);
 				_la = _input.LA(1);
 				if (_la==INDENT) {
 					{
-					setState(61);
+					setState(63);
 					match(INDENT);
 					}
 				}
 
-				setState(64);
-				object();
 				setState(66);
+				object();
+				setState(68);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 				case 1:
 					{
-					setState(65);
+					setState(67);
 					match(DEDENT);
 					}
 					break;
@@ -668,13 +671,13 @@ public class newtonParser extends Parser {
 		DataContext _localctx = new DataContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_data);
 		try {
-			setState(74);
+			setState(76);
 			switch (_input.LA(1)) {
 			case ID:
 				_localctx = new StringContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(70);
+				setState(72);
 				match(ID);
 				}
 				break;
@@ -682,7 +685,7 @@ public class newtonParser extends Parser {
 				_localctx = new NumericValueContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(71);
+				setState(73);
 				match(NUMBER);
 				}
 				break;
@@ -690,7 +693,7 @@ public class newtonParser extends Parser {
 				_localctx = new BoolValueContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(72);
+				setState(74);
 				match(BOOLEAN);
 				}
 				break;
@@ -698,7 +701,7 @@ public class newtonParser extends Parser {
 				_localctx = new NullValueContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(73);
+				setState(75);
 				match(T__0);
 				}
 				break;
@@ -718,27 +721,28 @@ public class newtonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\21O\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\21Q\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\3\3\3\5\3\25\n\3"+
 		"\3\4\3\4\6\4\31\n\4\r\4\16\4\32\3\5\3\5\3\5\3\5\5\5!\n\5\3\6\3\6\5\6%"+
-		"\n\6\6\6\'\n\6\r\6\16\6(\3\7\3\7\3\7\3\7\3\7\3\7\5\7\61\n\7\3\7\6\7\64"+
-		"\n\7\r\7\16\7\65\3\7\5\79\n\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7A\n\7\3\7\3\7"+
-		"\5\7E\n\7\5\7G\n\7\3\b\3\b\3\b\3\b\5\bM\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2"+
-		"\2W\2\20\3\2\2\2\4\24\3\2\2\2\6\30\3\2\2\2\b \3\2\2\2\n&\3\2\2\2\fF\3"+
-		"\2\2\2\16L\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2\23\25\5\n"+
-		"\6\2\24\22\3\2\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\4\2\2\27\31\5\b"+
-		"\5\2\30\26\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\7\3\2"+
-		"\2\2\34\35\5\16\b\2\35\36\7\r\2\2\36!\3\2\2\2\37!\5\n\6\2 \34\3\2\2\2"+
-		" \37\3\2\2\2!\t\3\2\2\2\"$\5\f\7\2#%\7\r\2\2$#\3\2\2\2$%\3\2\2\2%\'\3"+
-		"\2\2\2&\"\3\2\2\2\'(\3\2\2\2(&\3\2\2\2()\3\2\2\2)\13\3\2\2\2*+\7\7\2\2"+
-		"+,\7\5\2\2,G\5\16\b\2-.\7\7\2\2.\60\7\5\2\2/\61\7\20\2\2\60/\3\2\2\2\60"+
-		"\61\3\2\2\2\61\63\3\2\2\2\62\64\5\6\4\2\63\62\3\2\2\2\64\65\3\2\2\2\65"+
-		"\63\3\2\2\2\65\66\3\2\2\2\668\3\2\2\2\679\7\21\2\28\67\3\2\2\289\3\2\2"+
-		"\29G\3\2\2\2:;\7\7\2\2;<\7\5\2\2<G\7\6\2\2=>\7\7\2\2>@\7\5\2\2?A\7\20"+
-		"\2\2@?\3\2\2\2@A\3\2\2\2AB\3\2\2\2BD\5\n\6\2CE\7\21\2\2DC\3\2\2\2DE\3"+
-		"\2\2\2EG\3\2\2\2F*\3\2\2\2F-\3\2\2\2F:\3\2\2\2F=\3\2\2\2G\r\3\2\2\2HM"+
-		"\7\7\2\2IM\7\b\2\2JM\7\t\2\2KM\7\3\2\2LH\3\2\2\2LI\3\2\2\2LJ\3\2\2\2L"+
-		"K\3\2\2\2M\17\3\2\2\2\16\24\32 $(\60\658@DFL";
+		"\n\6\6\6\'\n\6\r\6\16\6(\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\63\n\7\3"+
+		"\7\6\7\66\n\7\r\7\16\7\67\3\7\5\7;\n\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7C\n"+
+		"\7\3\7\3\7\5\7G\n\7\5\7I\n\7\3\b\3\b\3\b\3\b\5\bO\n\b\3\b\2\2\t\2\4\6"+
+		"\b\n\f\16\2\2Y\2\20\3\2\2\2\4\24\3\2\2\2\6\30\3\2\2\2\b \3\2\2\2\n&\3"+
+		"\2\2\2\fH\3\2\2\2\16N\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2"+
+		"\23\25\5\n\6\2\24\22\3\2\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\4\2\2"+
+		"\27\31\5\b\5\2\30\26\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2"+
+		"\33\7\3\2\2\2\34\35\5\16\b\2\35\36\7\r\2\2\36!\3\2\2\2\37!\5\n\6\2 \34"+
+		"\3\2\2\2 \37\3\2\2\2!\t\3\2\2\2\"$\5\f\7\2#%\7\r\2\2$#\3\2\2\2$%\3\2\2"+
+		"\2%\'\3\2\2\2&\"\3\2\2\2\'(\3\2\2\2(&\3\2\2\2()\3\2\2\2)\13\3\2\2\2*+"+
+		"\7\7\2\2+,\7\5\2\2,-\5\16\b\2-.\7\r\2\2.I\3\2\2\2/\60\7\7\2\2\60\62\7"+
+		"\5\2\2\61\63\7\20\2\2\62\61\3\2\2\2\62\63\3\2\2\2\63\65\3\2\2\2\64\66"+
+		"\5\6\4\2\65\64\3\2\2\2\66\67\3\2\2\2\67\65\3\2\2\2\678\3\2\2\28:\3\2\2"+
+		"\29;\7\21\2\2:9\3\2\2\2:;\3\2\2\2;I\3\2\2\2<=\7\7\2\2=>\7\5\2\2>I\7\6"+
+		"\2\2?@\7\7\2\2@B\7\5\2\2AC\7\20\2\2BA\3\2\2\2BC\3\2\2\2CD\3\2\2\2DF\5"+
+		"\n\6\2EG\7\21\2\2FE\3\2\2\2FG\3\2\2\2GI\3\2\2\2H*\3\2\2\2H/\3\2\2\2H<"+
+		"\3\2\2\2H?\3\2\2\2I\r\3\2\2\2JO\7\7\2\2KO\7\b\2\2LO\7\t\2\2MO\7\3\2\2"+
+		"NJ\3\2\2\2NK\3\2\2\2NL\3\2\2\2NM\3\2\2\2O\17\3\2\2\2\16\24\32 $(\62\67"+
+		":BFHN";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
