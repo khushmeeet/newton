@@ -14,4 +14,6 @@ elif [ $1 == 'ast' ]
 then
     echo 'Running TestRig...'
     java org.antlr.v4.gui.TestRig newton file -gui
+else
+    echo 'Enter build or ast'
 fi
