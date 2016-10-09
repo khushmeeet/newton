@@ -51,25 +51,13 @@ public class newtonBaseListener implements newtonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayValue(newtonParser.ArrayValueContext ctx) { }
+	@Override public void enterValue(newtonParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayValue(newtonParser.ArrayValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterObjectInArray(newtonParser.ObjectInArrayContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitObjectInArray(newtonParser.ObjectInArrayContext ctx) { }
+	@Override public void exitValue(newtonParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -87,61 +75,25 @@ public class newtonBaseListener implements newtonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterObjectValue(newtonParser.ObjectValueContext ctx) { }
+	@Override public void enterPair(newtonParser.PairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitObjectValue(newtonParser.ObjectValueContext ctx) { }
+	@Override public void exitPair(newtonParser.PairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayInObject(newtonParser.ArrayInObjectContext ctx) { }
+	@Override public void enterStringValue(newtonParser.StringValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayInObject(newtonParser.ArrayInObjectContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterEmptyObject(newtonParser.EmptyObjectContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitEmptyObject(newtonParser.EmptyObjectContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNestedObject(newtonParser.NestedObjectContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNestedObject(newtonParser.NestedObjectContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterString(newtonParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitString(newtonParser.StringContext ctx) { }
+	@Override public void exitStringValue(newtonParser.StringValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -166,6 +118,42 @@ public class newtonBaseListener implements newtonListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBooleanValue(newtonParser.BooleanValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjectValue(newtonParser.ObjectValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectValue(newtonParser.ObjectValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayValue(newtonParser.ArrayValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayValue(newtonParser.ArrayValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEmptyObject(newtonParser.EmptyObjectContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEmptyObject(newtonParser.EmptyObjectContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

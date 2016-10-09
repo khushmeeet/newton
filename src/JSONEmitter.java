@@ -13,7 +13,7 @@ public class JSONEmitter extends newtonBaseListener {
         JSON.put(node, str);
     }
 
-    public void enterString(newtonParser.StringContext ctx) {
+    public void enterStringValue(newtonParser.StringValueContext ctx) {
         setValue(ctx, ctx.ID().getText());
     }
 
@@ -25,45 +25,24 @@ public class JSONEmitter extends newtonBaseListener {
         setValue(ctx, ctx.BOOLEAN().getText());
     }
 
+    public void enterEmptyObject(newtonParser.EmptyObjectContext ctx) {
+        setValue(ctx, ctx.CLOSED_PAR().getText());
+    }
+
     public void exitObjectValue(newtonParser.ObjectValueContext ctx) { 
-        StringBuilder buffer = new StringBuilder();
-        String key = ctx.ID().getText();
-        buffer.append(key);
-        buffer.append(": ");
-        newtonParser.DataContext dctx = ctx.data();
-        String value = getValue(dctx);
-        buffer.append(value);
-        setValue(ctx, buffer.toString());
+        setValue(ctx, getValue(ctx.object()));
     }
 
-    public void exitArrayInObject(newtonParser.ArrayInObjectContext ctx) { 
-        StringBuilder buffer = new StringBuilder();
-        buffer.append("\n");
-        buffer.append(ctx.ID().getText());
-        buffer.append(": ");
-        newtonParser.ArrayContext actx = ctx.array();
-        buffer.append(getValue(actx));
-        System.out.println(buffer.toString());
-        setValue(ctx, buffer.toString());
+    public void exitArrayValue(newtonParser.ArrayValueContext ctx) { 
+        setValue(ctx, getValue(ctx.array()));
     }
 
-    public void exitEmptyObject(newtonParser.EmptyObjectContext ctx) { 
+    public void exitPair(newtonParser.PairContext ctx) {
         StringBuilder buffer = new StringBuilder();
-        buffer.append("\n\t");
-        String key = ctx.ID().getText();
-        buffer.append(key);
-        buffer.append(": {}");
-        setValue(ctx, buffer.toString());
-    }
-
-    public void exitNestedObject(newtonParser.NestedObjectContext ctx) { 
-        StringBuilder buffer = new StringBuilder();
-        buffer.append("{\n\t");
         String key = ctx.ID().getText();
         buffer.append(key+": ");
-        newtonParser.ObjectContext objctx  = ctx.object();
-        buffer.append(getValue(objctx));
-        buffer.append("\n}");
+        newtonParser.DataContext dctx = ctx.data();
+        buffer.append(getValue(dctx));
         setValue(ctx, buffer.toString());
     }
 
@@ -79,19 +58,9 @@ public class JSONEmitter extends newtonBaseListener {
         setValue(ctx, buffer.toString());
     }
 
-    public void exitArrayValue(newtonParser.ArrayValueContext ctx) { 
+    public void exitValue(newtonParser.ValueContext ctx) {
         newtonParser.DataContext dctx = ctx.data();
-        String value = getValue(dctx);
-        setValue(ctx, value);
-    }
-
-    public void exitObjectInArray(newtonParser.ObjectInArrayContext ctx) { 
-        StringBuilder buffer = new StringBuilder();
-        buffer.append("\n\t");
-        newtonParser.ObjectContext objctx = ctx.object();
-        buffer.append(getValue(objctx));
-        buffer.append("\n");
-        setValue(ctx, buffer.toString());
+        setValue(ctx, getValue(ctx.data()));
     }
 
     public void exitArray(newtonParser.ArrayContext ctx) { 

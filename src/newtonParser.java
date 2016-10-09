@@ -156,6 +156,7 @@ public class newtonParser extends Parser {
 				}
 				break;
 			case ID:
+			case NL:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(17);
@@ -205,32 +206,26 @@ public class newtonParser extends Parser {
 	public final ArrayContext array() throws RecognitionException {
 		ArrayContext _localctx = new ArrayContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_array);
+		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(22); 
 			_errHandler.sync(this);
-			_alt = 1;
+			_la = _input.LA(1);
 			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(20);
-					match(DASH);
-					setState(21);
-					value();
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+				{
+				{
+				setState(20);
+				match(DASH);
+				setState(21);
+				value();
+				}
 				}
 				setState(24); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				_la = _input.LA(1);
+			} while ( _la==DASH );
 			}
 		}
 		catch (RecognitionException re) {
@@ -245,43 +240,21 @@ public class newtonParser extends Parser {
 	}
 
 	public static class ValueContext extends ParserRuleContext {
-		public ValueContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_value; }
-	 
-		public ValueContext() { }
-		public void copyFrom(ValueContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class ObjectInArrayContext extends ValueContext {
-		public ObjectContext object() {
-			return getRuleContext(ObjectContext.class,0);
-		}
-		public ObjectInArrayContext(ValueContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterObjectInArray(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitObjectInArray(this);
-		}
-	}
-	public static class ArrayValueContext extends ValueContext {
 		public DataContext data() {
 			return getRuleContext(DataContext.class,0);
 		}
 		public TerminalNode NL() { return getToken(newtonParser.NL, 0); }
-		public ArrayValueContext(ValueContext ctx) { copyFrom(ctx); }
+		public ValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterArrayValue(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitArrayValue(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitValue(this);
 		}
 	}
 
@@ -289,27 +262,12 @@ public class newtonParser extends Parser {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_value);
 		try {
-			setState(30);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
-			case 1:
-				_localctx = new ArrayValueContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(26);
-				data();
-				setState(27);
-				match(NL);
-				}
-				break;
-			case 2:
-				_localctx = new ObjectInArrayContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(29);
-				object();
-				}
-				break;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(26);
+			data();
+			setState(27);
+			match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -355,7 +313,7 @@ public class newtonParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); 
+			setState(33); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -363,14 +321,14 @@ public class newtonParser extends Parser {
 				case 1:
 					{
 					{
-					setState(32);
+					setState(29);
 					pair();
-					setState(34);
+					setState(31);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 					case 1:
 						{
-						setState(33);
+						setState(30);
 						match(NL);
 						}
 						break;
@@ -381,9 +339,9 @@ public class newtonParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(38); 
+				setState(35); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -399,81 +357,25 @@ public class newtonParser extends Parser {
 	}
 
 	public static class PairContext extends ParserRuleContext {
-		public PairContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_pair; }
-	 
-		public PairContext() { }
-		public void copyFrom(PairContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class ArrayInObjectContext extends PairContext {
-		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
-		public TerminalNode COLON() { return getToken(newtonParser.COLON, 0); }
-		public ArrayContext array() {
-			return getRuleContext(ArrayContext.class,0);
-		}
-		public TerminalNode INDENT() { return getToken(newtonParser.INDENT, 0); }
-		public TerminalNode DEDENT() { return getToken(newtonParser.DEDENT, 0); }
-		public ArrayInObjectContext(PairContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterArrayInObject(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitArrayInObject(this);
-		}
-	}
-	public static class NestedObjectContext extends PairContext {
-		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
-		public TerminalNode COLON() { return getToken(newtonParser.COLON, 0); }
-		public ObjectContext object() {
-			return getRuleContext(ObjectContext.class,0);
-		}
-		public TerminalNode INDENT() { return getToken(newtonParser.INDENT, 0); }
-		public TerminalNode DEDENT() { return getToken(newtonParser.DEDENT, 0); }
-		public NestedObjectContext(PairContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterNestedObject(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitNestedObject(this);
-		}
-	}
-	public static class ObjectValueContext extends PairContext {
 		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
 		public TerminalNode COLON() { return getToken(newtonParser.COLON, 0); }
 		public DataContext data() {
 			return getRuleContext(DataContext.class,0);
 		}
 		public TerminalNode NL() { return getToken(newtonParser.NL, 0); }
-		public ObjectValueContext(PairContext ctx) { copyFrom(ctx); }
+		public TerminalNode INDENT() { return getToken(newtonParser.INDENT, 0); }
+		public TerminalNode DEDENT() { return getToken(newtonParser.DEDENT, 0); }
+		public PairContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_pair; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterObjectValue(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterPair(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitObjectValue(this);
-		}
-	}
-	public static class EmptyObjectContext extends PairContext {
-		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
-		public TerminalNode COLON() { return getToken(newtonParser.COLON, 0); }
-		public TerminalNode CLOSED_PAR() { return getToken(newtonParser.CLOSED_PAR, 0); }
-		public EmptyObjectContext(PairContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterEmptyObject(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitEmptyObject(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitPair(this);
 		}
 	}
 
@@ -482,97 +384,42 @@ public class newtonParser extends Parser {
 		enterRule(_localctx, 10, RULE_pair);
 		int _la;
 		try {
-			setState(66);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
-			case 1:
-				_localctx = new ObjectValueContext(_localctx);
-				enterOuterAlt(_localctx, 1);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(38);
+			_la = _input.LA(1);
+			if (_la==NL) {
 				{
-				setState(40);
-				match(ID);
-				setState(41);
-				match(COLON);
-				setState(42);
-				data();
-				setState(43);
+				setState(37);
 				match(NL);
 				}
-				break;
-			case 2:
-				_localctx = new ArrayInObjectContext(_localctx);
-				enterOuterAlt(_localctx, 2);
+			}
+
+			setState(40);
+			match(ID);
+			setState(41);
+			match(COLON);
+			setState(43);
+			_la = _input.LA(1);
+			if (_la==INDENT) {
 				{
-				setState(45);
-				match(ID);
+				setState(42);
+				match(INDENT);
+				}
+			}
+
+			setState(45);
+			data();
+			setState(47);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			case 1:
+				{
 				setState(46);
-				match(COLON);
-				setState(48);
-				_la = _input.LA(1);
-				if (_la==INDENT) {
-					{
-					setState(47);
-					match(INDENT);
-					}
-				}
-
-				setState(50);
-				array();
-				setState(52);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
-				case 1:
-					{
-					setState(51);
-					match(DEDENT);
-					}
-					break;
-				}
+				match(DEDENT);
 				}
 				break;
-			case 3:
-				_localctx = new EmptyObjectContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(54);
-				match(ID);
-				setState(55);
-				match(COLON);
-				setState(56);
-				match(CLOSED_PAR);
-				}
-				break;
-			case 4:
-				_localctx = new NestedObjectContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(57);
-				match(ID);
-				setState(58);
-				match(COLON);
-				setState(60);
-				_la = _input.LA(1);
-				if (_la==INDENT) {
-					{
-					setState(59);
-					match(INDENT);
-					}
-				}
-
-				setState(62);
-				object();
-				setState(64);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
-				case 1:
-					{
-					setState(63);
-					match(DEDENT);
-					}
-					break;
-				}
-				}
-				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -597,6 +444,32 @@ public class newtonParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	public static class ObjectValueContext extends DataContext {
+		public ObjectContext object() {
+			return getRuleContext(ObjectContext.class,0);
+		}
+		public ObjectValueContext(DataContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterObjectValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitObjectValue(this);
+		}
+	}
+	public static class EmptyObjectContext extends DataContext {
+		public TerminalNode CLOSED_PAR() { return getToken(newtonParser.CLOSED_PAR, 0); }
+		public EmptyObjectContext(DataContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterEmptyObject(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitEmptyObject(this);
+		}
+	}
 	public static class BooleanValueContext extends DataContext {
 		public TerminalNode BOOLEAN() { return getToken(newtonParser.BOOLEAN, 0); }
 		public BooleanValueContext(DataContext ctx) { copyFrom(ctx); }
@@ -609,16 +482,16 @@ public class newtonParser extends Parser {
 			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitBooleanValue(this);
 		}
 	}
-	public static class StringContext extends DataContext {
+	public static class StringValueContext extends DataContext {
 		public TerminalNode ID() { return getToken(newtonParser.ID, 0); }
-		public StringContext(DataContext ctx) { copyFrom(ctx); }
+		public StringValueContext(DataContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterString(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterStringValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitString(this);
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitStringValue(this);
 		}
 	}
 	public static class NumericValueContext extends DataContext {
@@ -633,39 +506,76 @@ public class newtonParser extends Parser {
 			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitNumericValue(this);
 		}
 	}
+	public static class ArrayValueContext extends DataContext {
+		public ArrayContext array() {
+			return getRuleContext(ArrayContext.class,0);
+		}
+		public ArrayValueContext(DataContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).enterArrayValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof newtonListener ) ((newtonListener)listener).exitArrayValue(this);
+		}
+	}
 
 	public final DataContext data() throws RecognitionException {
 		DataContext _localctx = new DataContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_data);
 		try {
-			setState(71);
-			switch (_input.LA(1)) {
-			case ID:
-				_localctx = new StringContext(_localctx);
+			setState(55);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			case 1:
+				_localctx = new StringValueContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(68);
+				setState(49);
 				match(ID);
 				}
 				break;
-			case NUMBER:
+			case 2:
 				_localctx = new NumericValueContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(69);
+				setState(50);
 				match(NUMBER);
 				}
 				break;
-			case BOOLEAN:
+			case 3:
 				_localctx = new BooleanValueContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(70);
+				setState(51);
 				match(BOOLEAN);
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+			case 4:
+				_localctx = new ObjectValueContext(_localctx);
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(52);
+				object();
+				}
+				break;
+			case 5:
+				_localctx = new ArrayValueContext(_localctx);
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(53);
+				array();
+				}
+				break;
+			case 6:
+				_localctx = new EmptyObjectContext(_localctx);
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(54);
+				match(CLOSED_PAR);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -680,26 +590,22 @@ public class newtonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20L\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20<\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\3\3\3\5\3\25\n\3"+
-		"\3\4\3\4\6\4\31\n\4\r\4\16\4\32\3\5\3\5\3\5\3\5\5\5!\n\5\3\6\3\6\5\6%"+
-		"\n\6\6\6\'\n\6\r\6\16\6(\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\63\n\7\3"+
-		"\7\3\7\5\7\67\n\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7?\n\7\3\7\3\7\5\7C\n\7\5"+
-		"\7E\n\7\3\b\3\b\3\b\5\bJ\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2R\2\20\3\2\2"+
-		"\2\4\24\3\2\2\2\6\30\3\2\2\2\b \3\2\2\2\n&\3\2\2\2\fD\3\2\2\2\16I\3\2"+
+		"\3\4\3\4\6\4\31\n\4\r\4\16\4\32\3\5\3\5\3\5\3\6\3\6\5\6\"\n\6\6\6$\n\6"+
+		"\r\6\16\6%\3\7\5\7)\n\7\3\7\3\7\3\7\5\7.\n\7\3\7\3\7\5\7\62\n\7\3\b\3"+
+		"\b\3\b\3\b\3\b\3\b\5\b:\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2@\2\20\3\2\2\2"+
+		"\4\24\3\2\2\2\6\30\3\2\2\2\b\34\3\2\2\2\n#\3\2\2\2\f(\3\2\2\2\169\3\2"+
 		"\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2\23\25\5\n\6\2\24\22\3\2"+
 		"\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\3\2\2\27\31\5\b\5\2\30\26\3\2"+
 		"\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\7\3\2\2\2\34\35\5\16"+
-		"\b\2\35\36\7\f\2\2\36!\3\2\2\2\37!\5\n\6\2 \34\3\2\2\2 \37\3\2\2\2!\t"+
-		"\3\2\2\2\"$\5\f\7\2#%\7\f\2\2$#\3\2\2\2$%\3\2\2\2%\'\3\2\2\2&\"\3\2\2"+
-		"\2\'(\3\2\2\2(&\3\2\2\2()\3\2\2\2)\13\3\2\2\2*+\7\7\2\2+,\7\4\2\2,-\5"+
-		"\16\b\2-.\7\f\2\2.E\3\2\2\2/\60\7\7\2\2\60\62\7\4\2\2\61\63\7\17\2\2\62"+
-		"\61\3\2\2\2\62\63\3\2\2\2\63\64\3\2\2\2\64\66\5\6\4\2\65\67\7\20\2\2\66"+
-		"\65\3\2\2\2\66\67\3\2\2\2\67E\3\2\2\289\7\7\2\29:\7\4\2\2:E\7\5\2\2;<"+
-		"\7\7\2\2<>\7\4\2\2=?\7\17\2\2>=\3\2\2\2>?\3\2\2\2?@\3\2\2\2@B\5\n\6\2"+
-		"AC\7\20\2\2BA\3\2\2\2BC\3\2\2\2CE\3\2\2\2D*\3\2\2\2D/\3\2\2\2D8\3\2\2"+
-		"\2D;\3\2\2\2E\r\3\2\2\2FJ\7\7\2\2GJ\7\b\2\2HJ\7\6\2\2IF\3\2\2\2IG\3\2"+
-		"\2\2IH\3\2\2\2J\17\3\2\2\2\r\24\32 $(\62\66>BDI";
+		"\b\2\35\36\7\f\2\2\36\t\3\2\2\2\37!\5\f\7\2 \"\7\f\2\2! \3\2\2\2!\"\3"+
+		"\2\2\2\"$\3\2\2\2#\37\3\2\2\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\13\3\2\2"+
+		"\2\')\7\f\2\2(\'\3\2\2\2()\3\2\2\2)*\3\2\2\2*+\7\7\2\2+-\7\4\2\2,.\7\17"+
+		"\2\2-,\3\2\2\2-.\3\2\2\2./\3\2\2\2/\61\5\16\b\2\60\62\7\20\2\2\61\60\3"+
+		"\2\2\2\61\62\3\2\2\2\62\r\3\2\2\2\63:\7\7\2\2\64:\7\b\2\2\65:\7\6\2\2"+
+		"\66:\5\n\6\2\67:\5\6\4\28:\7\5\2\29\63\3\2\2\29\64\3\2\2\29\65\3\2\2\2"+
+		"9\66\3\2\2\29\67\3\2\2\298\3\2\2\2:\17\3\2\2\2\n\24\32!%(-\619";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

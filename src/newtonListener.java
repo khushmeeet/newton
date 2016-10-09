@@ -37,29 +37,15 @@ public interface newtonListener extends ParseTreeListener {
 	 */
 	void exitArray(newtonParser.ArrayContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ArrayValue}
-	 * labeled alternative in {@link newtonParser#value}.
+	 * Enter a parse tree produced by {@link newtonParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterArrayValue(newtonParser.ArrayValueContext ctx);
+	void enterValue(newtonParser.ValueContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ArrayValue}
-	 * labeled alternative in {@link newtonParser#value}.
+	 * Exit a parse tree produced by {@link newtonParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitArrayValue(newtonParser.ArrayValueContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ObjectInArray}
-	 * labeled alternative in {@link newtonParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void enterObjectInArray(newtonParser.ObjectInArrayContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ObjectInArray}
-	 * labeled alternative in {@link newtonParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void exitObjectInArray(newtonParser.ObjectInArrayContext ctx);
+	void exitValue(newtonParser.ValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link newtonParser#object}.
 	 * @param ctx the parse tree
@@ -71,65 +57,27 @@ public interface newtonListener extends ParseTreeListener {
 	 */
 	void exitObject(newtonParser.ObjectContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ObjectValue}
-	 * labeled alternative in {@link newtonParser#pair}.
+	 * Enter a parse tree produced by {@link newtonParser#pair}.
 	 * @param ctx the parse tree
 	 */
-	void enterObjectValue(newtonParser.ObjectValueContext ctx);
+	void enterPair(newtonParser.PairContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ObjectValue}
-	 * labeled alternative in {@link newtonParser#pair}.
+	 * Exit a parse tree produced by {@link newtonParser#pair}.
 	 * @param ctx the parse tree
 	 */
-	void exitObjectValue(newtonParser.ObjectValueContext ctx);
+	void exitPair(newtonParser.PairContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ArrayInObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayInObject(newtonParser.ArrayInObjectContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArrayInObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayInObject(newtonParser.ArrayInObjectContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code EmptyObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void enterEmptyObject(newtonParser.EmptyObjectContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code EmptyObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void exitEmptyObject(newtonParser.EmptyObjectContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code NestedObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void enterNestedObject(newtonParser.NestedObjectContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code NestedObject}
-	 * labeled alternative in {@link newtonParser#pair}.
-	 * @param ctx the parse tree
-	 */
-	void exitNestedObject(newtonParser.NestedObjectContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code String}
+	 * Enter a parse tree produced by the {@code StringValue}
 	 * labeled alternative in {@link newtonParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void enterString(newtonParser.StringContext ctx);
+	void enterStringValue(newtonParser.StringValueContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code String}
+	 * Exit a parse tree produced by the {@code StringValue}
 	 * labeled alternative in {@link newtonParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void exitString(newtonParser.StringContext ctx);
+	void exitStringValue(newtonParser.StringValueContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code NumericValue}
 	 * labeled alternative in {@link newtonParser#data}.
@@ -154,4 +102,40 @@ public interface newtonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBooleanValue(newtonParser.BooleanValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectValue(newtonParser.ObjectValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectValue(newtonParser.ObjectValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayValue(newtonParser.ArrayValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayValue(newtonParser.ArrayValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmptyObject(newtonParser.EmptyObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link newtonParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmptyObject(newtonParser.EmptyObjectContext ctx);
 }
