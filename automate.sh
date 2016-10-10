@@ -17,7 +17,7 @@ then
 elif [ $1 == 'token' ]
 then
     echo 'Running TestRig...'
-    java org.antlr.v4.gui.TestRig newton file -token
+    java org.antlr.v4.gui.TestRig newton file -tokens
 elif [ $1 == 'trace' ]
 then
     echo 'Running TestRig...'
