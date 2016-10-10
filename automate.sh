@@ -9,23 +9,23 @@ if [ $1 == 'build' ]
 then
     echo 'Running Renderer'
     echo '-----'
-    java Renderer ../testing/test.newton
+    java Renderer ../example/example.newton
 elif [ $1 == 'ast' ]
 then
     echo 'Running TestRig...'
-    java org.antlr.v4.gui.TestRig newton file -gui ../testing/test.newton
+    java org.antlr.v4.gui.TestRig newton file -gui ../example/example.newton
 elif [ $1 == 'token' ]
 then
     echo 'Running TestRig...'
-    java org.antlr.v4.gui.TestRig newton file -tokens ../testing/test.newton
+    java org.antlr.v4.gui.TestRig newton file -tokens ../example/example.newton
 elif [ $1 == 'trace' ]
 then
     echo 'Running TestRig...'
-    java org.antlr.v4.gui.TestRig newton file -trace ../testing/test.newton
+    java org.antlr.v4.gui.TestRig newton file -trace ../example/example.newton
 elif [ $1 == 'diagnostics' ]
 then
     echo 'Running TestRig...'
-    java org.antlr.v4.gui.TestRig newton file -diagnostics ../testing/test.newton
+    java org.antlr.v4.gui.TestRig newton file -diagnostics ../example/example.newton
 else
     echo 'Enter build / ast / token / trace / diagnostics '
 fi
