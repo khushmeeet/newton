@@ -1,11 +1,11 @@
-## newton
+## Newton
 Version of JSON, with readability in mind.
 
 It is based on YAML and is built using ANTLR with java bindings. Built upon the listener architecture.
 
 ### This is Newton
 ```
-    # Following is the JSON taken from https://jsonplaceholder.typicode.com/users
+# Following is the JSON taken from https://jsonplaceholder.typicode.com/users
 
 - id: 1
   name: Leanne Graham
