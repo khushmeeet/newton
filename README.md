@@ -5,7 +5,7 @@ It is based on YAML and is built using ANTLR with java bindings. Built upon the 
 
 ### This is Newton
 ```
-# Following is the JSON taken from https://jsonplaceholder.typicode.com/users
+# Following is the array of objects taken from https://jsonplaceholder.typicode.com/users
 
 - id: 1
   name: Leanne Graham
@@ -142,3 +142,4 @@ Some formatting still needs to be done.
 - [x] Listener Implementation
 - [ ] Folded text block
 - [ ] Support for hyphen in text
+- [ ] Readme.md Update
