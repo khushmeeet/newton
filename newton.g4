@@ -29,16 +29,16 @@ structures  : array
             | object                                        
             ;
 
-array       : ( DASH value )+
+array       : ( DASH value INDENT? DEDENT? )+
             ;
 
-value       : data NL                                       
+value       : data NL?                                     
             ;
 
 object      : ( pair NL? )+
             ;
 
-pair        : NL? ID COLON INDENT? data DEDENT?
+pair        : INDENT? ID COLON INDENT? data DEDENT?
             ;
 
 data        : ID                                            # StringValue
@@ -62,7 +62,7 @@ BOOLEAN     : 'true'
             | 'false'
             ;
 
-ID          : [a-z_A-Z0-9' '~!@$%*&^?.]+
+ID          : [a-z_A-Z0-9' '~!@$%*&^?.]+ 
             ;
 
 NUMBER      : REAL
@@ -70,7 +70,7 @@ NUMBER      : REAL
             | OCTAL
             ;
 
-REAL        : [0-9]+ ( '.' [0-9]+ )*
+REAL        : DASH? [0-9]+ ( '.' [0-9]+ )*
             ;
 
 HEX         : '0x' [0-9A-Fa-f]+
@@ -79,7 +79,7 @@ HEX         : '0x' [0-9A-Fa-f]+
 OCTAL       : '0c' [0-7]+
             ;
 
-NL          : ('\r'?'\n''\t'*)
+NL          : ('\r'? '\n' ' '*)
             ;
 
 COMMENT     : '#' ~[\r\n]*   -> skip
