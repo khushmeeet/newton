@@ -14,6 +14,14 @@ elif [ $1 == 'ast' ]
 then
     echo 'Running TestRig...'
     java org.antlr.v4.gui.TestRig newton file -gui
+elif [ $1 == 'token' ]
+then
+    echo 'Running TestRig...'
+    java org.antlr.v4.gui.TestRig newton file -token
+elif [ $1 == 'trace' ]
+then
+    echo 'Running TestRig...'
+    java org.antlr.v4.gui.TestRig newton file -trace
 else
     echo 'Enter build or ast'
 fi
