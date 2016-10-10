@@ -66,7 +66,7 @@ It is based on YAML and is built using ANTLR with java bindings. Built upon the 
 
 ### This is JSON
 Some formatting still needs to be done.
-```
+```json
     [{
 	 id: 1,
 	name: Leanne Graham,
