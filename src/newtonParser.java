@@ -156,7 +156,7 @@ public class newtonParser extends Parser {
 				}
 				break;
 			case ID:
-			case NL:
+			case INDENT:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(17);
@@ -189,6 +189,14 @@ public class newtonParser extends Parser {
 		public ValueContext value(int i) {
 			return getRuleContext(ValueContext.class,i);
 		}
+		public List<TerminalNode> INDENT() { return getTokens(newtonParser.INDENT); }
+		public TerminalNode INDENT(int i) {
+			return getToken(newtonParser.INDENT, i);
+		}
+		public List<TerminalNode> DEDENT() { return getTokens(newtonParser.DEDENT); }
+		public TerminalNode DEDENT(int i) {
+			return getToken(newtonParser.DEDENT, i);
+		}
 		public ArrayContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -206,26 +214,52 @@ public class newtonParser extends Parser {
 	public final ArrayContext array() throws RecognitionException {
 		ArrayContext _localctx = new ArrayContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_array);
-		int _la;
 		try {
+			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22); 
+			setState(28); 
 			_errHandler.sync(this);
-			_la = _input.LA(1);
+			_alt = 1;
 			do {
-				{
-				{
-				setState(20);
-				match(DASH);
-				setState(21);
-				value();
+				switch (_alt) {
+				case 1:
+					{
+					{
+					setState(20);
+					match(DASH);
+					setState(21);
+					value();
+					setState(23);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
+					case 1:
+						{
+						setState(22);
+						match(INDENT);
+						}
+						break;
+					}
+					setState(26);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+					case 1:
+						{
+						setState(25);
+						match(DEDENT);
+						}
+						break;
+					}
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
-				}
-				setState(24); 
+				setState(30); 
 				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==DASH );
+				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
 		catch (RecognitionException re) {
@@ -264,10 +298,18 @@ public class newtonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(26);
+			setState(32);
 			data();
-			setState(27);
-			match(NL);
+			setState(34);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			case 1:
+				{
+				setState(33);
+				match(NL);
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -313,7 +355,7 @@ public class newtonParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33); 
+			setState(40); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -321,14 +363,14 @@ public class newtonParser extends Parser {
 				case 1:
 					{
 					{
-					setState(29);
+					setState(36);
 					pair();
-					setState(31);
+					setState(38);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
-						setState(30);
+						setState(37);
 						match(NL);
 						}
 						break;
@@ -339,9 +381,9 @@ public class newtonParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(35); 
+				setState(42); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -362,8 +404,10 @@ public class newtonParser extends Parser {
 		public DataContext data() {
 			return getRuleContext(DataContext.class,0);
 		}
-		public TerminalNode NL() { return getToken(newtonParser.NL, 0); }
-		public TerminalNode INDENT() { return getToken(newtonParser.INDENT, 0); }
+		public List<TerminalNode> INDENT() { return getTokens(newtonParser.INDENT); }
+		public TerminalNode INDENT(int i) {
+			return getToken(newtonParser.INDENT, i);
+		}
 		public TerminalNode DEDENT() { return getToken(newtonParser.DEDENT, 0); }
 		public PairContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -386,36 +430,37 @@ public class newtonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38);
-			_la = _input.LA(1);
-			if (_la==NL) {
-				{
-				setState(37);
-				match(NL);
-				}
-			}
-
-			setState(40);
-			match(ID);
-			setState(41);
-			match(COLON);
-			setState(43);
+			setState(45);
 			_la = _input.LA(1);
 			if (_la==INDENT) {
 				{
-				setState(42);
+				setState(44);
 				match(INDENT);
 				}
 			}
 
-			setState(45);
-			data();
 			setState(47);
+			match(ID);
+			setState(48);
+			match(COLON);
+			setState(50);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
-				setState(46);
+				setState(49);
+				match(INDENT);
+				}
+				break;
+			}
+			setState(52);
+			data();
+			setState(54);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			case 1:
+				{
+				setState(53);
 				match(DEDENT);
 				}
 				break;
@@ -525,14 +570,14 @@ public class newtonParser extends Parser {
 		DataContext _localctx = new DataContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_data);
 		try {
-			setState(55);
+			setState(62);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new StringValueContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(49);
+				setState(56);
 				match(ID);
 				}
 				break;
@@ -540,7 +585,7 @@ public class newtonParser extends Parser {
 				_localctx = new NumericValueContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(50);
+				setState(57);
 				match(NUMBER);
 				}
 				break;
@@ -548,7 +593,7 @@ public class newtonParser extends Parser {
 				_localctx = new BooleanValueContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(51);
+				setState(58);
 				match(BOOLEAN);
 				}
 				break;
@@ -556,7 +601,7 @@ public class newtonParser extends Parser {
 				_localctx = new ObjectValueContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(52);
+				setState(59);
 				object();
 				}
 				break;
@@ -564,7 +609,7 @@ public class newtonParser extends Parser {
 				_localctx = new ArrayValueContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(53);
+				setState(60);
 				array();
 				}
 				break;
@@ -572,7 +617,7 @@ public class newtonParser extends Parser {
 				_localctx = new EmptyObjectContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(54);
+				setState(61);
 				match(CLOSED_PAR);
 				}
 				break;
@@ -590,22 +635,24 @@ public class newtonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20<\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20C\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\3\3\3\5\3\25\n\3"+
-		"\3\4\3\4\6\4\31\n\4\r\4\16\4\32\3\5\3\5\3\5\3\6\3\6\5\6\"\n\6\6\6$\n\6"+
-		"\r\6\16\6%\3\7\5\7)\n\7\3\7\3\7\3\7\5\7.\n\7\3\7\3\7\5\7\62\n\7\3\b\3"+
-		"\b\3\b\3\b\3\b\3\b\5\b:\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2@\2\20\3\2\2\2"+
-		"\4\24\3\2\2\2\6\30\3\2\2\2\b\34\3\2\2\2\n#\3\2\2\2\f(\3\2\2\2\169\3\2"+
-		"\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25\5\6\4\2\23\25\5\n\6\2\24\22\3\2"+
-		"\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27\7\3\2\2\27\31\5\b\5\2\30\26\3\2"+
-		"\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\7\3\2\2\2\34\35\5\16"+
-		"\b\2\35\36\7\f\2\2\36\t\3\2\2\2\37!\5\f\7\2 \"\7\f\2\2! \3\2\2\2!\"\3"+
-		"\2\2\2\"$\3\2\2\2#\37\3\2\2\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\13\3\2\2"+
-		"\2\')\7\f\2\2(\'\3\2\2\2()\3\2\2\2)*\3\2\2\2*+\7\7\2\2+-\7\4\2\2,.\7\17"+
-		"\2\2-,\3\2\2\2-.\3\2\2\2./\3\2\2\2/\61\5\16\b\2\60\62\7\20\2\2\61\60\3"+
-		"\2\2\2\61\62\3\2\2\2\62\r\3\2\2\2\63:\7\7\2\2\64:\7\b\2\2\65:\7\6\2\2"+
-		"\66:\5\n\6\2\67:\5\6\4\28:\7\5\2\29\63\3\2\2\29\64\3\2\2\29\65\3\2\2\2"+
-		"9\66\3\2\2\29\67\3\2\2\298\3\2\2\2:\17\3\2\2\2\n\24\32!%(-\619";
+		"\3\4\3\4\3\4\5\4\32\n\4\3\4\5\4\35\n\4\6\4\37\n\4\r\4\16\4 \3\5\3\5\5"+
+		"\5%\n\5\3\6\3\6\5\6)\n\6\6\6+\n\6\r\6\16\6,\3\7\5\7\60\n\7\3\7\3\7\3\7"+
+		"\5\7\65\n\7\3\7\3\7\5\79\n\7\3\b\3\b\3\b\3\b\3\b\3\b\5\bA\n\b\3\b\2\2"+
+		"\t\2\4\6\b\n\f\16\2\2J\2\20\3\2\2\2\4\24\3\2\2\2\6\36\3\2\2\2\b\"\3\2"+
+		"\2\2\n*\3\2\2\2\f/\3\2\2\2\16@\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\25"+
+		"\5\6\4\2\23\25\5\n\6\2\24\22\3\2\2\2\24\23\3\2\2\2\25\5\3\2\2\2\26\27"+
+		"\7\3\2\2\27\31\5\b\5\2\30\32\7\17\2\2\31\30\3\2\2\2\31\32\3\2\2\2\32\34"+
+		"\3\2\2\2\33\35\7\20\2\2\34\33\3\2\2\2\34\35\3\2\2\2\35\37\3\2\2\2\36\26"+
+		"\3\2\2\2\37 \3\2\2\2 \36\3\2\2\2 !\3\2\2\2!\7\3\2\2\2\"$\5\16\b\2#%\7"+
+		"\f\2\2$#\3\2\2\2$%\3\2\2\2%\t\3\2\2\2&(\5\f\7\2\')\7\f\2\2(\'\3\2\2\2"+
+		"()\3\2\2\2)+\3\2\2\2*&\3\2\2\2+,\3\2\2\2,*\3\2\2\2,-\3\2\2\2-\13\3\2\2"+
+		"\2.\60\7\17\2\2/.\3\2\2\2/\60\3\2\2\2\60\61\3\2\2\2\61\62\7\7\2\2\62\64"+
+		"\7\4\2\2\63\65\7\17\2\2\64\63\3\2\2\2\64\65\3\2\2\2\65\66\3\2\2\2\668"+
+		"\5\16\b\2\679\7\20\2\28\67\3\2\2\289\3\2\2\29\r\3\2\2\2:A\7\7\2\2;A\7"+
+		"\b\2\2<A\7\6\2\2=A\5\n\6\2>A\5\6\4\2?A\7\5\2\2@:\3\2\2\2@;\3\2\2\2@<\3"+
+		"\2\2\2@=\3\2\2\2@>\3\2\2\2@?\3\2\2\2A\17\3\2\2\2\r\24\31\34 $(,/\648@";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

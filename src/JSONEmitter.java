@@ -54,7 +54,9 @@ public class JSONEmitter extends newtonBaseListener {
             buffer.append(",");
             buffer.append("\n\t");
         }
-        buffer.append("\n\t}");
+        buffer.deleteCharAt(buffer.length() - 3);
+        buffer.setLength(buffer.length() - 1);
+        buffer.append("}");
         setValue(ctx, buffer.toString());
     }
 
@@ -70,6 +72,7 @@ public class JSONEmitter extends newtonBaseListener {
             buffer.append(getValue(vctx));
             buffer.append(",");
         }
+        buffer.setLength(buffer.length() - 1);
         buffer.append(" ]");
         setValue(ctx, buffer.toString());
     }
@@ -81,6 +84,4 @@ public class JSONEmitter extends newtonBaseListener {
     public void exitFile(newtonParser.FileContext ctx) { 
         setValue(ctx, getValue(ctx.getChild(0)));
     }
-
-
 }
