@@ -4,7 +4,7 @@ Version of JSON, with readability in mind.
 It is based on YAML and is built using ANTLR with java bindings. Built upon the listener architecture.
 
 ## How to Use
-First install ANTLR jar file.
+First install ANTLR.
 
 	$ cd /usr/local/lib
 	$ sudo curl -O http://www.antlr.org/download/antlr-4.5.3-complete.jar
