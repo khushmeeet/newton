@@ -173,4 +173,4 @@ Some formatting still needs to be done.
 - [ ] Enclosing text in quotes
 - [ ] Folded text block
 - [ ] Support for hyphen in text
-- [ ] Readme.md Update
+- [x] Readme.md Update
