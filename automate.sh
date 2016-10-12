@@ -1,9 +1,17 @@
 echo 'Generating Lexer and Parser'
 java -jar /usr/local/lib/antlr-4.5.3-complete.jar newton.g4 -o src/ -listener -no-visitor -long-messages -Werror
 cd src/
-javac Renderer.java -d ../gen
-echo 'Compiling Renderer'
-cd ../gen/
+if [ -d "../gen" ]
+then
+    javac Renderer.java -d ../gen
+    echo 'Compiling Renderer'
+    cd ../gen/
+else
+    mkdir ../gen
+    javac Renderer.java -d ../gen
+    echo 'Compiling Renderer'
+    cd ../gen/
+fi
 
 if [ $1 == 'build' ]
 then
