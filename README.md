@@ -1,11 +1,41 @@
-## newton
+## Newton
 Version of JSON, with readability in mind.
 
 It is based on YAML and is built using ANTLR with java bindings. Built upon the listener architecture.
 
+## How to Use
+First install ANTLR.
+
+	$ cd /usr/local/lib
+	$ sudo curl -O http://www.antlr.org/download/antlr-4.5.3-complete.jar
+
+Then, if your are on macOs or Linux , you can use ```sh automate.sh``` to run the build process. This will generate the ```lexer``` and ```parser``` from the specified grammar and then it will compile those classes into the gen folder, and use those classes to run the parser on the example file provided in the example folder.
+
+An update is coming that will create gen folder , when ```automate.sh``` is run for the first time.
+
+For windows , to install ANTLR
+
+	Download http://antlr.org/download/antlr-4.5.3-complete.jar.
+	Add antlr4-complete.jar to CLASSPATH, either:
+	Permanently: Using System Properties dialog > Environment variables > Create or append to CLASSPATH variable
+	Temporarily, at command line:
+	SET CLASSPATH=.;C:\Javalib\antlr4-complete.jar;%CLASSPATH%
+	Create batch commands for ANTLR Tool, TestRig in dir in PATH
+	 antlr4.bat: java org.antlr.v4.Tool %*
+	 grun.bat:   java org.antlr.v4.gui.TestRig %*
+
+Unfortunatly there is no ```.bat``` file at the moment to run the build process on windows. You have to it manually.
+For windows, create ```gen``` folder at the root. Run ```antlr4``` on the grammar and specifies to the to be /src/.
+then run ```javac``` command on the generated java files and specify the output directory to be /gen at the root.
+and run ```java``` to execute the class file.
+
+API - coming soon 
+
+Also parser API is also coming is javascript, to be integrated in build process.
+
 ### This is Newton
 ```
-    # Following is the JSON taken from https://jsonplaceholder.typicode.com/users
+# Following is the array of objects taken from https://jsonplaceholder.typicode.com/users
 
 - id: 1
   name: Leanne Graham
@@ -66,7 +96,7 @@ It is based on YAML and is built using ANTLR with java bindings. Built upon the 
 
 ### This is JSON
 Some formatting still needs to be done.
-```
+```javascript
     [{
 	 id: 1,
 	name: Leanne Graham,
@@ -140,5 +170,7 @@ Some formatting still needs to be done.
 
 ## TODO
 - [x] Listener Implementation
+- [ ] Enclosing text in quotes
 - [ ] Folded text block
 - [ ] Support for hyphen in text
+- [x] Readme.md Update
